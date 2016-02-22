@@ -1,22 +1,28 @@
 import java.util.Date;
+import java.util.Random;
 
 public abstract class Kort {
 	
 	private String fornavn;
 	private String etternavn;
 	private int kode;
-	private long kortnummer;
+	private static int kortnummer;
 	private boolean sperretKort; // true - sperret, false - åpent
 	protected Date opprettet = new Date();
+	Random random = new Random();
 	
-	public Kort(String fornavn, String etternavn, int kode, long kortnummer, boolean sperretKort) {
+	Kort(String fornavn, String etternavn, int kode, long kortnummer, boolean sperretKort) {
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.kode = kode;
-		//this.kortnummer = //generere kortnummer
+		Kort.kortnummer = random.nextInt(9999) + 10000;		//Genererer kortnummer på 5 siffer.
 		this.sperretKort = false;
 	}
 	
+	public Kort() {
+		//super
+	}
+
 	public String getNavn() {
 		return fornavn + " " + etternavn;
 	}
@@ -29,9 +35,6 @@ public abstract class Kort {
 		return "Navn: " + getNavn() + ", kortnummer: " + kortnummer + ", PIN: " + kode + ", sperret kort? " + isSperret(); 
 	}
 	
-	public abstract boolean sjekkPIN(int kode) {
-		//Sjekk om pinkoden er gyldig
-	}
-	
+	public abstract boolean sjekkPIN(int pin);
 	
 }
