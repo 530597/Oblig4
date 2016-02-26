@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class KortTest {
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		
 		ArrayList<Kort> kortArray = new ArrayList<>();
 		
@@ -15,5 +15,6 @@ public class KortTest {
 			System.out.println("Kode 1234 er " + (kort.checkPIN(1234) ? "gyldig": "ugyldig"));
 			System.out.println("Kode 9999 er " + (kort.checkPIN(9999) ? "gyldig": "ugyldig"));
 		}
+		
 	}
 }
